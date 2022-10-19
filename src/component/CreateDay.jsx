@@ -1,7 +1,7 @@
 import React from 'react'
 import useFetch from '../hooks/useFetch'
 import {useNavigate} from "react-router-dom"
-
+import axios from 'axios';
 
 export default function CreateDay() {
 
@@ -9,22 +9,28 @@ export default function CreateDay() {
     const history =  useNavigate(); 
 
 
-    const addDay = () => {
+    const addDay = async() => {
+        const day = days.length + 1;
 
-        fetch(`http://localhost:3001/days/`, {
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json",
-            },
-            body: JSON.stringify({
-                day : days.length + 1
-            }),
-        }).then(res => {
-            if( res.ok) {
-                alert("생성이 완료 되었습니다.");
-                history(`/`);
-            }
-        });
+        await axios.post(`http://localhost:3001/days/`,{day})
+        alert("생성이 완료 되었습니다.");
+        history(`/`);
+
+        //서버 요청 !!
+        // axios(`http://localhost:3001/days/`, {
+        //     method : "POST",
+        //     headers : {
+        //         "Content-Type" : "application/json",
+        //     },
+        //     data : {
+        //         day : days.length + 1
+        //     },
+        // }).then(res => {
+        //     if( res.data) {
+        //         alert("생성이 완료 되었습니다.");
+        //         history(`/`);
+        //     }
+        // }).catch(err => console.log(err));
     }
 
     return (

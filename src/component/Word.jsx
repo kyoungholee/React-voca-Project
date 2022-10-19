@@ -1,11 +1,11 @@
 //단어를 표현해줌 
 import React, { useState } from 'react'
+import axios from 'axios';
 
                                 //새로운 w 변수명으로 할당됌 !! 
 export default function Word({wordes : w}) {
     
-    const [wordes , setWordes] = useState(w)
-
+    const [wordes , setWordes] = useState(w);
     const [isShow, setIsShow] = useState(false);
     const [isDone , setIsDone] = useState(wordes.isDone);
 
@@ -14,29 +14,34 @@ export default function Word({wordes : w}) {
         setIsShow(!isShow);
     }
 
+    //서버 요청 !!
     const toggleDone = () => {
+
         fetch(`http://localhost:3001/words/${wordes.id}`, {
             method : "PUT",
             headers : {
                 "Content-Type" : "application/json",
             },
-            body: JSON.stringify({
+            data: {
                 ...wordes,
                 isDone : !isDone,
-            }),
+            },
         }).then(res => {
-            if( res.ok) {
+            if( res.data) {
                 setIsDone(!isDone);
             }
-        });
+        }).catch(err => console.log(err));
     }
 
     function del() {
         if(window.confirm('삭제 하시겠습니까~?')) {
+
+
+            //서버 요청 
             fetch(`http://localhost:3001/words/${wordes.id}`, {
                 method : 'DELETE'
             }).then(res => {
-                if(res.ok) {
+                if(res.data) {
                     setWordes({id : 0})
                 }
             })

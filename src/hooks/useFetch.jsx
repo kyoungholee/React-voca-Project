@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 export default function useFetch(url) {
-    const [data, setData] = useState([]);
+    const [datas, setDatas] = useState([]);
+    
+    const axiosData = async() => {
+        const response = await axios.get(url);
+        setDatas(response.data);
+    };
 
-    useEffect(()=> {
+    useEffect(() => {
+        axiosData();
+    },[]);
 
-     //api 비동기 통신
-     fetch(url)
-     .then(res => { 
-         //http응답이다.
-         return res.json()
-     })
-     .then(data => {
-         setData(data);
-     })
-
-    },[url]);
-
-    return data;
+    return datas;
 }
+
+
+
+  //.then(res => { 
+         //http응답이다.
+       //  return res.json()
+     //})
