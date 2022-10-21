@@ -12,7 +12,7 @@ export default function CreateDay() {
     const addDay = async() => {
         const day = days.length + 1;
 
-        await axios.post(`http://localhost:3001/days/`,{day})
+        await axios.post(`http://localhost:3001/days/`, {day})
         alert("생성이 완료 되었습니다.");
         history(`/`);
 

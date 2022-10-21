@@ -1,6 +1,6 @@
 //단어를 표현해줌 
-import React, { useState } from 'react'
 import axios from 'axios';
+import React, { useState } from 'react'
 
                                 //새로운 w 변수명으로 할당됌 !! 
 export default function Word({wordes : w}) {
@@ -14,43 +14,46 @@ export default function Word({wordes : w}) {
         setIsShow(!isShow);
     }
 
-    //서버 요청 !!
     const toggleDone = () => {
+
 
         fetch(`http://localhost:3001/words/${wordes.id}`, {
             method : "PUT",
             headers : {
                 "Content-Type" : "application/json",
             },
-            data: {
+            body: JSON.stringify({
                 ...wordes,
                 isDone : !isDone,
-            },
+            }),
         }).then(res => {
-            if( res.data) {
+            if( res.ok) {
                 setIsDone(!isDone);
             }
-        }).catch(err => console.log(err));
+        });
     }
 
     function del() {
         if(window.confirm('삭제 하시겠습니까~?')) {
 
+            axios.delete(`http://localhost:3001/words/${wordes.id}`, setWordes({...wordes, id : 0}))
 
-            //서버 요청 
-            fetch(`http://localhost:3001/words/${wordes.id}`, {
-                method : 'DELETE'
-            }).then(res => {
-                if(res.data) {
-                    setWordes({id : 0})
-                }
-            })
+        //     fetch(`http://localhost:3001/words/${wordes.id}`, {
+        //         method : 'DELETE',
+        //     }).then(res => {
+        //         if(res.ok) {
+        //             setWordes({
+        //                 ...wordes,
+        //                 id : 0,
+        //             })
+        //         }
+        //     })
         }
     }
 
-    //if(wordes.id === 0 ) {
-      //  return null;
-    //}
+    if(wordes.id === 0 ) {
+      return null;
+    }
 
   return (
     <tr className={isDone ? "off" : ""}>

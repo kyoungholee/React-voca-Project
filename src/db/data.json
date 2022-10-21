@@ -15,33 +15,22 @@
     {
       "day": 4,
       "id": 4
-    },
-    {
-      "day": 5,
-      "id": 5
     }
   ],
   "words": [
     {
-      "day": 2,
-      "eng": "mouse",
-      "kor": "쥐",
-      "isDone": true,
-      "id": 9
+      "day": "2",
+      "eng": "eggggg",
+      "kor": "계란",
+      "isDone": false,
+      "id": 2
     },
     {
       "day": "2",
-      "eng": "Phone",
-      "kor": "핸드폰",
-      "isDone": false,
-      "id": 11
-    },
-    {
-      "day": "3",
-      "eng": "banank",
+      "eng": "banana",
       "kor": "바나나",
       "isDone": false,
-      "id": 13
+      "id": 4
     }
   ]
 }
