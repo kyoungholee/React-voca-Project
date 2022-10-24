@@ -14,6 +14,7 @@ export default function Header() {
             <Link to ="/create_day" className='link'>
                 Day 추가
             </Link>
+       
         </div>
     </div>
   )

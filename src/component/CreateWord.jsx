@@ -23,7 +23,7 @@ export default function CreateWord() {
         const kor = korRef.current.value;
         const isDone = false;
 
-        //서버 요청 !!
+        //서버 요청 !! post를 이용해 데이터를 만들어준다. 
         await axios.post(`http://localhost:3001/words/`,{day, eng, kor, isDone})
         alert("생성이 완료 되었습니다.");
                 history(`/day/${dayRef.current.value}`);

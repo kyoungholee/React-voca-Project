@@ -7,6 +7,8 @@ import useFetch from '../hooks/useFetch';
 
 export default function DayList() {
 
+
+    //서버 요청 !!
     const days = useFetch("http://localhost:3001/days");
 
     //
@@ -32,6 +34,7 @@ export default function DayList() {
             {days.map(days => (
                 <li key = {days.id}>
                     <Link to = {`/day/${days.day}`} >Day {days.day} </Link>
+                    
                 </li>
             ))}
         </ul>
