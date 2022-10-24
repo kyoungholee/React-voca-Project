@@ -5,7 +5,7 @@ export default function useFetch(url) {
     const [datas, setDatas] = useState([]);
     
     const axiosData = async() => {
-        const response = await axios.get(url);
+        const response = await axios.get(url); //단순히 받은 url을 Read(get)을 이용해 읽어오는 역할
         setDatas(response.data);
     };
 

@@ -5,8 +5,14 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Word from "./Word";
+import axios from "axios";
+import {useNavigate} from "react-router-dom"
+
 
 export default function Day() {
+
+  const history = useNavigate();
+
 
     //const day = 1;
 
@@ -14,10 +20,23 @@ export default function Day() {
     const day = a.day;
     console.log(a);
 
+
+    
     //const wordList = dummy.words.filter(wordes => (wordes.day === Number(day)));
 
     //서버 요청 !!
     const words = useFetch(`http://localhost:3001/words?day=${day}`);
+
+
+    
+  function del () {
+    if(window.confirm('정말 삭제 하시겠습니까? ')) {
+        axios.delete(`http://localhost:3001/days/${day}`);
+        history(`/`);
+        }
+      }
+
+
 
   return (
     <>
@@ -25,10 +44,14 @@ export default function Day() {
       <table>
         <tbody>
           {words.map((wordes) => (
-            <Word wordes = {wordes} key = {wordes.id}/>
+            <Word wordes = {wordes} days = {day} key = {wordes.id}/>
           ))}
         </tbody>
       </table>
+    <div>
+    <button onClick={del}>날짜삭제!! </button>
+    </div>
     </>
+    
   );
 }
