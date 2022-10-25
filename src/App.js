@@ -8,6 +8,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import EmptyPage from './component/EmptyPage';
 import CreateWord from './component/CreateWord';
 import CreateDay from './component/CreateDay';
+import Sign from './component/Sign';
+import Login from './component/Login';
 
 
 function App() {
@@ -37,6 +39,12 @@ function App() {
         </Route>
 
         <Route path='/create_day' element = {<CreateDay />}>
+        </Route>
+
+        <Route path='/sign_up' element = {<Sign />}>
+        </Route>
+
+        <Route path='/login' element = {<Login />}>
         </Route>
 
         <Route element = {<EmptyPage />}>

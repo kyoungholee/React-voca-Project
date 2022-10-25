@@ -14,6 +14,12 @@ export default function Header() {
             <Link to ="/create_day" className='link'>
                 Day 추가
             </Link>
+            <Link to ="/sign_up" className='link'>
+                회원가입
+            </Link>
+            <Link to ="/login" className='link'>
+                로그인
+            </Link>
        
         </div>
     </div>

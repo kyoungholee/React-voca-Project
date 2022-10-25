@@ -1,0 +1,52 @@
+.Sign_start {
+    font-size: 32px;
+    text-align: center;
+}
+.ID_start{
+    text-align: center;
+    font-size: 24px;
+    padding: 12px;
+}
+.ID_input{
+    font-size: 24px;
+}
+.PW_start{
+    padding: 12px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 24px;   
+}
+.PW2_start {
+    padding: 12px;
+    margin-left: 66px;
+    text-align: center;
+    font-size: 24px;
+}
+.PW_input{
+    font-size: 24px;
+}
+.PW2_input {
+    font-size: 24px;
+}
+.EM_start {
+    text-align: center;
+    padding: 12px;
+    font-size: 24px;
+}
+.EM_input{
+    
+    font-size: 24px;
+}
+.PN_start{
+    text-align: center;
+    padding: 12px;
+    font-size: 24px;
+    margin-right: 80px;
+
+}
+.Sex_start{
+    text-align: center;
+    padding: 12px;
+    margin-right: 160px;
+    font-size: 24px;
+}
