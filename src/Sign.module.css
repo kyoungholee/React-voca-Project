@@ -53,3 +53,9 @@
 .join_btn{
     margin-right: 10px;
 }
+.errorMsgStyle{
+    font-size : 12px;
+    color : red;
+    line-height : 1.4;
+}
+

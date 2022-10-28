@@ -62,7 +62,6 @@ export default function Sign() {
             setIsName(true);
         }
     }
-
     const onChangePassword = (e) => {
         const currentPassword = e.target.value;
         setPassword(currentPassword);
@@ -115,6 +114,7 @@ export default function Sign() {
 
         if (!phoneRegExp.test(currentPhone)) {
             setPhoneMessage("올바른 형식이 아닙니다!");
+
             setIsPhone(false);
         } else {
             setPhoneMessage("사용 가능한 번호입니다:-)");
@@ -122,6 +122,21 @@ export default function Sign() {
         }
     };
 
+    const addCellPhone = (e) => {
+        const currentNumber = e.target.value;
+        setPhone(currentNumber);
+        if(currentNumber.length == 3 || currentNumber.length == 8) {
+            setPhone(currentNumber + "-");
+            onChangePhone(currentNumber + "-")
+        }else {
+            onChangePhone(currentNumber);
+        }
+    }
+
+    const onChangeBirth = (e) => {
+        const currentBirth = e.target.value;
+        setBirth(currentBirth);
+    }
     
 
   return (
@@ -135,31 +150,31 @@ export default function Sign() {
             <label>
                 아이디
             </label>
-            <input className={`${style.ID_input}`} name = "userName" value={id} 
+            <input className={`${style.ID_input}`} id = "id" name = "userName" value={id} 
             placeholder='아이디를 입력해주세요' onChange={onChangeId} />
+            <p className="message"> {idMessage} </p>
         </div>
 
         <div className={`${style.ID_start}`}>
             <label>
                 이름
             </label>
-            <input className={`${style.ID_input}`} name = "NickName" value={name} 
+            <input className={`${style.ID_input}`} id = "name" name = "name" value={name} 
             placeholder='이름을 입력해주세요' onChange = {onChangeName} />
         </div>
-
 
         <div className={`${style.PW_start}`}>
             <label>
                 비밀번호
             </label>
-            <input className={`${style.PW_input}`} name = "password" value={password}
+            <input className={`${style.PW_input}`} id = "password" name = "password" value={password}
             placeholder='비밀번호 입력' onChange={onChangePassword} />
         </div>
         <div className={`${style.PW2_start}`}>
             <label>
                 비밀번호 확인
             </label>
-            <input className={`${style.PW2_input}`} name = "password2" value={passwordConfirm}
+            <input className={`${style.PW2_input}`} id = "passwordConfirm" name = "passwordConfirm" value={passwordConfirm}
             placeholder='비밀번호 한번 더 입력' onChange={onChangePasswordConfirm} />
         </div>
 
@@ -167,7 +182,7 @@ export default function Sign() {
             <label>
                 이메일
             </label>
-            <input className={`${style.EM_input}`} name = "email" value={email} 
+            <input className={`${style.EM_input}`} id = "email" name = "email" value={email} 
             placeholder='이메일 입력' onChange={onChangeEmail} />
             
         </div>
@@ -176,8 +191,8 @@ export default function Sign() {
             <label>
                 휴대폰 번호 
             </label>
-            <input className={`${style.PN_input}`} name = "phone" value={phone} 
-            placeholder='숫자를 입력하세요' />
+            <input className={`${style.PN_input}`} id = "phone" name = "phone" value={phone} 
+            placeholder='숫자를 입력하세요' onChange={addCellPhone} />
         </div>
 
         <div className={`${style.Sex_start}`}>
@@ -185,12 +200,11 @@ export default function Sign() {
                 생년월일 
             </label>
             <input type="text" value={birth} 
-            placeholder='성별을 입력해주세요' />
+            placeholder='성별을 입력해주세요' onChange = {onChangeBirth} />
         </div>
 
-        <button className={`${style.join_btn}`}>가입하기</button>
-        <button>돌아가기</button>
-        
+        <button className={`${style.join_btn}`} type = "submit">가입하기</button>
+
         </form>
         </>
   )
