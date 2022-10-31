@@ -53,9 +53,13 @@
 .join_btn{
     margin-right: 10px;
 }
-.errorMsgStyle{
+.ErrorMessage{
     font-size : 12px;
     color : red;
     line-height : 1.4;
 }
-
+.NotErrorMS {
+    font-size : 12px;
+    color : blue;
+    line-height : 1.4;
+}
